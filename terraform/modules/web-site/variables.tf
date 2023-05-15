@@ -1,11 +1,9 @@
-# Input variable definitions
-
-variable "static_resources" {
-  description = "path to static resources"
+variable "domain_name" {
   type        = string
+  description = "Website domain name. Example: example.com"
 }
 
-variable "bucket_access_OAI" {
-  description = "OAI of authorized bucket accessors"
-  type        = list(string)
+variable "redirect_domain_name" {
+  type        = string
+  description = "Redirects to the domain set in the variable 'domain_name'. Example: www.example.com"
 }
