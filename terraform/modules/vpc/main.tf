@@ -18,7 +18,7 @@ resource "aws_subnet" "functions" {
     Name = "subnet_functions_${count.index}"
   }
 
-  depends_on = [aws_vpc.this, aws_availability_zones.available]
+  depends_on = [aws_vpc.this, data.aws_availability_zones.available]
 }
 
 resource "aws_subnet" "persistance" {
@@ -31,5 +31,5 @@ resource "aws_subnet" "persistance" {
     Name = "subnet_persistance_${count.index}"
   }
 
-  depends_on = [aws_vpc.this, aws_availability_zones.available, aws_subnet.functions]
+  depends_on = [aws_vpc.this, data.aws_availability_zones.available, aws_subnet.functions]
 }

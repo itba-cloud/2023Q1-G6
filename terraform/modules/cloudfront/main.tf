@@ -1,6 +1,6 @@
 # Cloudfront
 
-resource "aws_cloudfront_distribution" {
+resource "aws_cloudfront_distribution" "s3" {
   # s3
   origin {
     domain_name = var.domain_name
@@ -43,6 +43,9 @@ resource "aws_cloudfront_distribution" {
     }
   }
 
+  viewer_certificate {
+    cloudfront_default_certificate = true
+  }
   # tags = {
   #   enviroment = module.global_settings.stage_name
   #   name = "Cloudfront"
