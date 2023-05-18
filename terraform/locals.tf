@@ -3,6 +3,7 @@ locals {
   # AWS VPC Configuration
   aws_vpc_network = "10.0.0.0/16"
   aws_az_count    = 2
+  region =      var.aws_region
   
   # aws_ec2_ami             = "ami-0022f774911c1d690"
   # aws_ec2_type            = "t2.micro"
