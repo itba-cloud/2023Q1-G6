@@ -17,11 +17,11 @@ variable "vpc_id" {
   type = string
 }
 
-variable "vpc_subnet_cidr" {
-  description = "The value of the vpc subnet the db is to be deployed in" 
-  type = string
-}
-variable "vpc_subnet_id" {
+# variable "vpc_subnet_cidr" {
+#   description = "The value of the vpc subnet the db is to be deployed in" 
+#   type = string
+# }
+variable "vpc_subnet_ids" {
   description = " The value of the id of the VPC subnet" 
-  type = string
+  type = list(string)
 }

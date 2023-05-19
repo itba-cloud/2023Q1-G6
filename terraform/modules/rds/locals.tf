@@ -12,7 +12,7 @@ locals {
 #   }
 db_user= "${local.db_name}-user"
 db_password="placeholderpasswd"
-  engine                = "postgres"
+  engine                = "POSTGRESQL"
   engine_version        = "14.7"
   family                = "postgres14" # DB parameter group
   major_engine_version  = "14"         # DB option group
