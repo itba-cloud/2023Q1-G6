@@ -51,7 +51,7 @@ data "aws_iam_policy_document" "redirect_iam" {
 # -------------------- Website --------------------
 
 resource "aws_s3_bucket" "website" {
-  bucket_prefix =  var.domain_name
+  bucket_prefix = var.domain_name
 }
 
 resource "aws_s3_bucket_website_configuration" "website_config" {
@@ -126,7 +126,7 @@ data "aws_iam_policy_document" "website_iam" {
 }
 
 resource "aws_s3_bucket_logging" "website_log" {
-  bucket = aws_s3_bucket.website.id
+  bucket        = aws_s3_bucket.website.id
   target_bucket = aws_s3_bucket.log.id
   target_prefix = "log/"
 }
@@ -135,7 +135,7 @@ resource "aws_s3_bucket_logging" "website_log" {
 # -------------------- Log --------------------
 
 resource "aws_s3_bucket" "log" {
-  
+
   bucket_prefix = "log-bucket"
 }
 

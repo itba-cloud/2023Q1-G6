@@ -13,12 +13,12 @@ variable "aws_region" {
 }
 
 variable "vpc_cidr" {
-  description = "The value of the vpc the db is to be deployed in" 
-  type = string
+  description = "The value of the vpc the db is to be deployed in"
+  type        = string
 }
 variable "vpc_id" {
-  description = "The value of the id of the VPC" 
-  type = string
+  description = "The value of the id of the VPC"
+  type        = string
 }
 
 # variable "vpc_subnet_cidr" {
@@ -26,6 +26,6 @@ variable "vpc_id" {
 #   type = string
 # }
 variable "vpc_subnet_ids" {
-  description = " The value of the id of the VPC subnet" 
-  type = list(string)
+  description = " The value of the id of the VPC subnet"
+  type        = list(string)
 }

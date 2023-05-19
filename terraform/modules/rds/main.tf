@@ -7,14 +7,14 @@ resource "aws_db_instance" "this" {
   max_allocated_storage = local.max_allocated_storage
   multi_az              = true
   # db_name               = local.db_name
-  db_name = "MyDB"
-  engine                = local.engine
-  engine_version        = local.engine_version
-  instance_class        = local.instance_class
-  username              = local.db_user
-  password              = local.db_password
-  port                  = local.db_port
-  db_subnet_group_name  = aws_db_subnet_group.this.name
+  db_name              = "MyDB"
+  engine               = local.engine
+  engine_version       = local.engine_version
+  instance_class       = local.instance_class
+  username             = local.db_user
+  password             = local.db_password
+  port                 = local.db_port
+  db_subnet_group_name = aws_db_subnet_group.this.name
 
   skip_final_snapshot = false
 

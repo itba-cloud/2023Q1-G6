@@ -4,9 +4,9 @@
 
 output "db_instance_endpoint" {
 
-description = "The connection endpoint"
+  description = "The connection endpoint"
 
-value = aws_db_instance.this.endpoint
+  value = aws_db_instance.this.endpoint
 
 }
 
@@ -14,50 +14,50 @@ value = aws_db_instance.this.endpoint
 
 output "db_instance_id" {
 
-description = "The RDS instance ID"
+  description = "The RDS instance ID"
 
-value = aws_db_instance.this.id
+  value = aws_db_instance.this.id
 
 }
 
 output "db_instance_name" {
 
-description = "The database name"
+  description = "The database name"
 
-value = aws_db_instance.this.db_name
+  value = aws_db_instance.this.db_name
 
 }
 
 output "db_instance_username" {
 
-description = "The master username for the database"
+  description = "The master username for the database"
 
-value = aws_db_instance.this.username
+  value = aws_db_instance.this.username
 
-sensitive = true
+  sensitive = true
 
 }
 
 output "db_instance_port" {
 
-description = "The database port"
+  description = "The database port"
 
-value = aws_db_instance.this.port
+  value = aws_db_instance.this.port
 
 }
 
 output "db_instance_status" {
 
-description = "The database status"
+  description = "The database status"
 
-value = aws_db_instance.this.status
+  value = aws_db_instance.this.status
 
 }
 output "db_instance_allocated_storage" {
 
-description = "The database status"
+  description = "The database status"
 
-value = aws_db_instance.this.allocated_storage
+  value = aws_db_instance.this.allocated_storage
 
 }
 

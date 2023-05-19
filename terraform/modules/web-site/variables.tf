@@ -3,7 +3,7 @@
 # --------------------------------------------------------------------
 
 variable "bucket_name" {
-  type = string
+  type        = string
   description = "Bucket name"
 }
 
@@ -22,11 +22,11 @@ variable "bucket_access_oai" {
 }
 
 variable "index_document" {
-  type = string
+  type        = string
   description = "Index page"
 }
 
 variable "error_document" {
-  type = string
+  type        = string
   description = "Error page"
 }
