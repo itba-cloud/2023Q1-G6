@@ -1,12 +1,16 @@
+# ---------------------------------------------------------------------------
+# Route53
+# ---------------------------------------------------------------------------
+
 # resource "aws_route_53" "public_website" {
 #   name = var.domain_name
 # }
-data "aws_route53_zone" "this" {
+resource "aws_route53_zone" "this" {
   name = var.domain_name
 }
 
 resource "aws_route53_record" "domain_record" {
-  zone_id = data.aws_route53_zone.this.zone_id
+  zone_id = aws_route53_zone.this.zone_id
   name    = var.domain_name
   type    = "A"
 
@@ -18,7 +22,7 @@ resource "aws_route53_record" "domain_record" {
 }
 
 resource "aws_route53_record" "www" {
-  zone_id = data.aws_route53_zone.this.zone_id
+  zone_id = aws_route53_zone.this.zone_id
   name    = "www.${var.domain_name}"
   type    = "CNAME"
   ttl     = 900
