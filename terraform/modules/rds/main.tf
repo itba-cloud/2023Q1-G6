@@ -17,19 +17,18 @@ resource "aws_db_instance" "this" {
     name = aws_db_instance.this.db_name
   }
 }
-# resource "aws_db_proxy" "db_proxy" {
-#   name                   = "${local.db_name}-proxy"
-#   debug_logging          = false
-#   engine_family          = local.engine
-#   idle_client_timeout    = 1800
-#   require_tls            = true
-#   # role_arn               = aws_iam_role.example.arn
-#   # vpc_security_group_ids = [aws_security_group.example.id]
-#   vpc_subnet_ids         = [var.vpc_id]
 
-  
+resource "aws_db_proxy" "db_proxy" {
+  name                   = "${local.db_name}-proxy"
+  debug_logging          = false
+  engine_family          = local.engine
+  idle_client_timeout    = 1800
+  require_tls            = true
+  # role_arn               = aws_iam_role.example.arn
+  # vpc_security_group_ids = [aws_security_group.example.id]
+  vpc_subnet_ids         = [var.vpc_id]
 
-#   tags = {
-#     name = aws_db_proxy.db_proxy.name
-#   }
-# }
+  tags = {
+    name = aws_db_proxy.db_proxy.name
+  }
+}
