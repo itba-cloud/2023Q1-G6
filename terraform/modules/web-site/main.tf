@@ -1,13 +1,19 @@
 # -------------------- Redirect --------------------
 
 resource "aws_s3_bucket" "redirect" {
-  bucket = var.redirect_domain_name
+  bucket_prefix = var.redirect_domain_name
 
   website {
     redirect_all_requests_to = "https://${var.domain_name}"
   }
 }
 
+resource "aws_s3_bucket_ownership_controls" "redirect" {
+  bucket = aws_s3_bucket.redirect.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
 
 
 resource "aws_s3_bucket_policy" "redirect_policy" {
@@ -37,11 +43,18 @@ data "aws_iam_policy_document" "redirect_iam" {
 # -------------------- Website --------------------
 
 resource "aws_s3_bucket" "website" {
-  bucket = var.domain_name
+  bucket_prefix =  var.domain_name
 
   website {
     index_document = "index.html"
     error_document = "error.html"
+  }
+}
+
+resource "aws_s3_bucket_ownership_controls" "website" {
+  bucket = aws_s3_bucket.website.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
   }
 }
 
@@ -83,7 +96,15 @@ resource "aws_s3_bucket_logging" "website_log" {
 # -------------------- Log --------------------
 
 resource "aws_s3_bucket" "log" {
-  bucket = "log-bucket"
+  
+  bucket_prefix = "log-bucket"
+}
+
+resource "aws_s3_bucket_ownership_controls" "log" {
+  bucket = aws_s3_bucket.log.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
 }
 
 resource "aws_s3_bucket_acl" "log_acl" {

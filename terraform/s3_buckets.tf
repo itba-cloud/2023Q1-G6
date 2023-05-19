@@ -8,7 +8,7 @@ module "website" {
   # bucket_name = local.s3.website.bucket_name
   # export_path = local.s3.website.path
 
-  domain_name = coalesce("www.",var.web_site_domain)
+  domain_name = format("%s%s","www.",var.web_site_domain)
   redirect_domain_name=var.web_site_domain
 
   # index_document = local.s3.website.index_document

@@ -15,7 +15,7 @@ resource "aws_db_instance" "this" {
   skip_final_snapshot = false
 
   tags = {
-    name = aws_db_instance.this.db_name
+    name = local.db_name
   }
 }
 
@@ -44,7 +44,7 @@ resource "aws_db_proxy" "db_proxy" {
   }
 
   tags = {
-    name = aws_db_proxy.db_proxy.name
+    name = "${local.db_name}-proxy"
   }
 }
 
