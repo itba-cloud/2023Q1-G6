@@ -7,9 +7,9 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     domain_name = var.website_bucket_regional_domain_name
     origin_id = local.s3_origin_id
 
-    # s3_origin_config {
-    #   origin_access_identity = aws_cloudfront_origin_access_identity.default.cloudfront_access_identity_path
-    # }
+    s3_origin_config {
+      origin_access_identity = aws_cloudfront_origin_access_identity.oai.cloudfront_access_identity_path
+    }
   }
 
   enabled = true
@@ -45,4 +45,8 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   viewer_certificate {
     cloudfront_default_certificate = true
   }
+}
+
+resource "aws_cloudfront_origin_access_identity" "oai" {
+  comment = "OAI for our CF"
 }

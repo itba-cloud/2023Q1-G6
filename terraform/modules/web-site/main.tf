@@ -25,7 +25,7 @@ data "aws_iam_policy_document" "redirect_iam" {
   statement {
     principals {
       type        = "AWS"
-      identifiers = ["*"]
+      identifiers = var.bucket_access_oai
     }
 
     actions = [
@@ -72,7 +72,7 @@ data "aws_iam_policy_document" "website_iam" {
   statement {
     principals {
       type        = "AWS"
-      identifiers = ["*"]
+      identifiers = var.bucket_access_oai
     }
 
     actions = [
