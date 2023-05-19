@@ -10,5 +10,14 @@ terraform {
 }
 
 provider "aws" {
-  region = var.aws_region
+  alias  = "aws"
+  region = local.region
+
+  default_tags {
+    tags = {
+      author     = "Grupo 6"
+      university = "ITBA"
+      subject    = "Cloud Computing"
+    }
+  }
 }

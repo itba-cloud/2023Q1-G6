@@ -2,9 +2,14 @@
 
 resource "aws_s3_bucket" "redirect" {
   bucket_prefix = var.redirect_domain_name
+}
 
-  website {
-    redirect_all_requests_to = "https://${var.domain_name}"
+resource "aws_s3_bucket_website_configuration" "redirect_config" {
+  bucket = aws_s3_bucket.redirect.id
+
+  redirect_all_requests_to {
+    protocol  = "http"
+    host_name = var.domain_name
   }
 }
 
@@ -14,7 +19,6 @@ resource "aws_s3_bucket_ownership_controls" "redirect" {
     object_ownership = "BucketOwnerPreferred"
   }
 }
-
 
 resource "aws_s3_bucket_policy" "redirect_policy" {
   bucket = aws_s3_bucket.redirect.id
@@ -44,10 +48,17 @@ data "aws_iam_policy_document" "redirect_iam" {
 
 resource "aws_s3_bucket" "website" {
   bucket_prefix =  var.domain_name
+}
 
-  website {
-    index_document = "index.html"
-    error_document = "error.html"
+resource "aws_s3_bucket_website_configuration" "website_config" {
+  bucket = aws_s3_bucket.website.id
+
+  index_document {
+    suffix = var.index_document
+  }
+
+  error_document {
+    key = var.error_document
   }
 }
 
@@ -86,10 +97,6 @@ resource "aws_s3_bucket_acl" "example" {
 #   bucket = aws_s3_bucket.website.id
 #   acl    = "public-read"
 # }
-
-
-
-
 
 resource "aws_s3_bucket_policy" "website_policy" {
   bucket = aws_s3_bucket.website.id
