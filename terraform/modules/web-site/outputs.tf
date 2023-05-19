@@ -22,3 +22,7 @@ output "s3_bucket_id" {
 output "website_bucket_regional_domain_name" {
   value = aws_s3_bucket.website.bucket_regional_domain_name
 }
+
+output "website_bucket_redirect_ip" {
+  value = aws_s3_bucket.redirect.hosted_zone_id
+}

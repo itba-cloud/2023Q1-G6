@@ -10,8 +10,9 @@ terraform {
 }
 
 provider "aws" {
-  alias  = "aws"
+  # alias  = "aws"
   region = local.region
+  shared_credentials_files = ["./credentials"]
 
   default_tags {
     tags = {
