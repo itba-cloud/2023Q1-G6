@@ -3,7 +3,8 @@
 resource "aws_cloudfront_distribution" "s3_distribution" {
 
   origin {
-    domain_name = module.website.website_bucket_regional_domain_name
+    # domain_name = module.website.website_bucket_regional_domain_name
+    domain_name = var.website_bucket_regional_domain_name
     origin_id = local.s3_origin_id
 
     s3_origin_config {

@@ -8,6 +8,8 @@ resource "aws_s3_bucket" "redirect" {
   }
 }
 
+
+
 resource "aws_s3_bucket_policy" "redirect_policy" {
   bucket = aws_s3_bucket.redirect.id
   policy = data.aws_iam_policy_document.redirect_iam.json
