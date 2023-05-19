@@ -16,7 +16,7 @@ resource "aws_db_instance" "this" {
   port                 = local.db_port
   db_subnet_group_name = aws_db_subnet_group.this.name
 
-  skip_final_snapshot = false
+  skip_final_snapshot = true
 
   tags = {
     name = local.db_name
