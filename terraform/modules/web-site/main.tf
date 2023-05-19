@@ -87,7 +87,7 @@ resource "aws_s3_bucket_public_access_block" "website" {
   restrict_public_buckets = false
 }
 
-resource "aws_s3_bucket_acl" "example" {
+resource "aws_s3_bucket_acl" "website_acl" {
   depends_on = [
     aws_s3_bucket_ownership_controls.website,
     aws_s3_bucket_public_access_block.website,
