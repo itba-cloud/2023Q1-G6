@@ -166,7 +166,7 @@ resource "aws_s3_bucket_acl" "log_acl" {
 #   etag = filemd5("path/to/file")
 # }
 
-resource "aws_s3_bucket_object" "object" {
+resource "aws_s3_object" "object" {
   for_each = fileset(var.static_resource_path, "**")
   bucket = aws_s3_bucket.website.id
   key = each.value
