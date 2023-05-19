@@ -12,7 +12,7 @@ locals {
   s3 = {
     website = {
       bucket_name      = "classroom"
-      domain_name      = "daguichi.com"
+      domain_name      = "cloud.daguichi.com"
       static_resources = "../resources"
 
       index_document = "index.html"

@@ -7,7 +7,7 @@ resource "aws_acm_certificate" "this" {
   subject_alternative_names = ["www.${var.domain_name}"]
   validation_method         = "DNS"
 
-   lifecycle {
+  lifecycle {
     create_before_destroy = true
   }
 }
@@ -15,9 +15,9 @@ resource "aws_acm_certificate" "this" {
 resource "aws_route53_record" "this" {
   for_each = {
     for domain_validation_object in aws_acm_certificate.this.domain_validation_options : domain_validation_object.domain_name => {
-      name    = domain_validation_object.resource_record_name
-      record  = domain_validation_object.resource_record_value
-      type    = domain_validation_object.resource_record_type
+      name   = domain_validation_object.resource_record_name
+      record = domain_validation_object.resource_record_value
+      type   = domain_validation_object.resource_record_type
     }
   }
 
