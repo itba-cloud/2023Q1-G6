@@ -30,3 +30,9 @@ variable "error_document" {
   type        = string
   description = "Error page"
 }
+
+variable "static_resource_path" {
+  description = "path for resources uploaded to bucket"
+  type = string
+  
+}

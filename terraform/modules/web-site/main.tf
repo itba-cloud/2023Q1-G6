@@ -150,3 +150,26 @@ resource "aws_s3_bucket_acl" "log_acl" {
   bucket = aws_s3_bucket.log.id
   acl    = "log-delivery-write"
 }
+
+
+# ==================bucket objects==================
+
+# resource "aws_s3_bucket_object" "object" {
+#   for-each=
+#   bucket = ""
+#   key    = "new_object_key"
+#   source = "path/to/file"
+
+#   # The filemd5() function is available in Terraform 0.11.12 and later
+#   # For Terraform 0.11.11 and earlier, use the md5() function and the file() function:
+#   # etag = "${md5(file("path/to/file"))}"
+#   etag = filemd5("path/to/file")
+# }
+
+resource "aws_s3_bucket_object" "object" {
+  for_each = fileset(var.static_resource_path, "**")
+  bucket = aws_s3_bucket.website.id
+  key = each.value
+  source = "${var.static_resource_path}${each.value}"
+  etag = filemd5("${var.static_resource_path}${each.value}")
+}

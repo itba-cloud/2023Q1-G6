@@ -13,7 +13,7 @@ locals {
     website = {
       bucket_name      = "classroom"
       domain_name      = "cloud.daguichi.com"
-      static_resources = "../resources"
+      static_resources = "../resources/"
 
       index_document = "index.html"
       error_document = "error.html"
