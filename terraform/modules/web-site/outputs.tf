@@ -9,3 +9,7 @@ output "website_bucket_endpoint" {
 output "log_bucket_endpoint" {
   value = aws_s3_bucket.log.website_endpoint
 }
+
+output "website_bucket_regional_domain_name" {
+  value = aws_s3_bucket.website.bucket_regional_domain_name
+}

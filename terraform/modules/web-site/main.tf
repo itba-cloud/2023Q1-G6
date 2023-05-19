@@ -8,12 +8,12 @@ resource "aws_s3_bucket" "redirect" {
   }
 }
 
-resource "aws_s3_bucket_policy" "redirect" {
+resource "aws_s3_bucket_policy" "redirect_policy" {
   bucket = aws_s3_bucket.redirect.id
-  policy = data.aws_iam_policy_document.redirect.json
+  policy = data.aws_iam_policy_document.redirect_iam.json
 }
 
-data "aws_iam_policy_document" "redirect" {
+data "aws_iam_policy_document" "redirect_iam" {
   statement {
     principals {
       type        = "AWS"
@@ -43,17 +43,17 @@ resource "aws_s3_bucket" "website" {
   }
 }
 
-resource "aws_s3_bucket_acl" "website" {
+resource "aws_s3_bucket_acl" "website_acl" {
   bucket = aws_s3_bucket.website.id
   acl    = "public-read"
 }
 
-resource "aws_s3_bucket_policy" "website" {
+resource "aws_s3_bucket_policy" "website_policy" {
   bucket = aws_s3_bucket.website.id
-  policy = data.aws_iam_policy_document.website.json
+  policy = data.aws_iam_policy_document.website_iam.json
 }
 
-data "aws_iam_policy_document" "website" {
+data "aws_iam_policy_document" "website_iam" {
   statement {
     principals {
       type        = "AWS"
@@ -71,6 +71,12 @@ data "aws_iam_policy_document" "website" {
   }
 }
 
+resource "aws_s3_bucket_logging" "website_log" {
+  bucket = aws_s3_bucket.website.id
+  target_bucket = aws_s3_bucket.log.id
+  target_prefix = "log/"
+}
+
 
 # -------------------- Log --------------------
 
@@ -78,13 +84,7 @@ resource "aws_s3_bucket" "log" {
   bucket = "log-bucket"
 }
 
-resource "aws_s3_bucket_acl" "log" {
+resource "aws_s3_bucket_acl" "log_acl" {
   bucket = aws_s3_bucket.log.id
   acl    = "log-delivery-write"
-}
-
-resource "aws_s3_bucket_logging" "website" {
-  bucket = aws_s3_bucket.website.id
-  target_bucket = aws_s3_bucket.log.id
-  target_prefix = "log/"
 }

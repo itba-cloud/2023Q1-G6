@@ -11,6 +11,13 @@ locals {
 
   # static_resources = "resources"
 
-  web_site_domain = var.web_site_domain
-  # alb_domain_name = var.alb_domain_name
+  s3 = {
+    web-site = {
+      bucket_name = "example123"
+      path        = "./resources/web-site"
+
+      index_document = "index.html"
+      error_document = "error.html"
+    }
+  }
 }
