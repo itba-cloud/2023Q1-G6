@@ -1,6 +1,6 @@
 
-terraform/.terraform.lock.hcl
+terraform/organization/.terraform.lock.hcl
 
-terraform/.terraform/*
+terraform/organization/.terraform/*
 
-terraform/*.tfstate*
+terraform/organization/*.tfstate*
