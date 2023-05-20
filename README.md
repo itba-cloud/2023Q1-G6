@@ -1,4 +1,4 @@
-# repo-template
+# G6 2023 CLOUD
 
 Repositorio correspondiente al Grupo 6:
 
