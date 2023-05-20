@@ -56,6 +56,10 @@ Repositorio correspondiente al Grupo 6:
      * descripción: itera por una array de lambdas creando instancias una por una
 
      ---
-5. **Arquitectura:**
+
+5. **Acerca de Route53**
+Para el uso de un subdominio de nuestra posesión, es necesario agregar, en el DNS del dominio, los cuatro registros NS que se brindan al crear una hosted zone; y también se debe apuntar al servicio de Cloudfront.
+
+6. **Arquitectura:**
 
    ![1684539237131](image/README/1684539237131.png)
